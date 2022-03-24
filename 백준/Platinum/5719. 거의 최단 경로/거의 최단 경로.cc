@@ -20,7 +20,7 @@ vector<pair<int, int>>v1[501];
 vector<pair<int, int>>v2[501];
 
 int distS[501];
-int distE[501];
+int distD[501];
 
 void dijk(int s) {
 	priority_queue<pair<int, int>>pq;
@@ -47,19 +47,19 @@ void dijk(int s) {
 void dijk1(int s) {
 	priority_queue<pair<int, int>>pq;
 	pq.push({ 0,s });
-	distE[s] = 0;
+	distD[s] = 0;
 	while (!pq.empty()) {
 		int d = -pq.top().first;
 		int cur = pq.top().second;
 		pq.pop();
-		if (distE[cur] < d)
+		if (distD[cur] < d)
 			continue;
 		for (int i = 0; i < v1[cur].size(); i++) {
 			int next = v1[cur][i].first;
 			int cost = d + v1[cur][i].second;
 			
-			if (cost < distE[next]) {
-				distE[next] = cost;
+			if (cost < distD[next]) {
+				distD[next] = cost;
 				pq.push({ -cost,next });
 			}
 		}
@@ -103,7 +103,7 @@ void find_short(int s, int e) {
 		for (int i = 0; i < v[s].size(); i++) {
 			int next = v[s][i].first;
 			int cost = v[s][i].second;
-			if (distS[s] + cost + distE[next] == distS[e]) {
+			if (distS[s] + cost + distD[next] == distS[e]) {
 				continue;
 			}
 			else {
@@ -136,7 +136,7 @@ int main(void) {
 
 		}
 		memset(distS, INF, sizeof(distS));
-		memset(distE, INF, sizeof(distE));
+		memset(distD, INF, sizeof(distD));
 		dijk(s);
 		dijk1(d);
 		find_short(s, d);
