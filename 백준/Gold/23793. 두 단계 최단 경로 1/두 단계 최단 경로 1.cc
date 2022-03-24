@@ -18,8 +18,6 @@ vector<pair<int, int>>v[100001];
 
 int dist1[100001];
 
-int dist2[100001];
-
 int x, y, z,check;
 
 void dijk(int s) {
