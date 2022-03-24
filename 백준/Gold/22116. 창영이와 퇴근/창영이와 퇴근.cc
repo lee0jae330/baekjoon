@@ -15,7 +15,6 @@ void fastio() {
 #define INF 1e9+1
 
 int arr[1001][1001];
-vector<pair<int, int >>v[1000001];
 int dist[1001][1001];
 
 int xx[4] = { 0,1,0,-1 };
@@ -38,18 +37,11 @@ void dijk(int x, int y, int N) {
 			int tx = x + xx[i], ty = y + yy[i];
 			if (tx >= 0 && ty >= 0 && tx < N && ty < N) {
 				int cost = abs(arr[x][y] - arr[tx][ty]);
-				if (!flag) {
-					if (dist[tx][ty] > cost) {
-						dist[tx][ty] = cost;
-						pq.push({ -cost, {tx,ty} });
-					}
-				}
-				else {
+                if(flag)
 					cost = max(cost, d);
-					if (dist[tx][ty] > cost) {
+				if (dist[tx][ty] > cost) {
 						dist[tx][ty] = cost;
 						pq.push({ -cost, {tx,ty} });
-					}
 				}
 			}
 		}
