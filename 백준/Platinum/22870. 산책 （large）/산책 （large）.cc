@@ -46,23 +46,21 @@ void findShortest(int s, int e) {
 	int pre = s;
 
 	while (s != e) {
-		int MIN = INF;
-
+        int adj;
 		for (int i = 0; i < v[s].size(); i++) {
 			int next = v[s][i].first;
 			int d = v[s][i].second;
 			if (next == pre)
 				continue;
 			if (distS[s] +d + distE[next] == distS[e]) {
-				MIN = next;
+				adj=next;
+                break;
 			}
-			if (MIN == next)
-				break;
 		}
 		if (s != e)
-			visited[MIN] = 1;
+			visited[adj] = 1;
 		pre = s;
-		s = MIN;
+		s = adj;
 	}
 	
 }
