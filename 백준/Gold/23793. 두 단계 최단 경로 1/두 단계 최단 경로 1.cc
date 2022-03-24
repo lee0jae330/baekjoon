@@ -59,12 +59,12 @@ int main(void) {
 
 	cin >> x >> y >> z;
 	
-	fill(dist1, dist1 + sizeof(dist1) / sizeof(int), INF);
+	fill(dist1, dist1 +100001, INF);
 
 	dijk(x);
 	long long int xy = dist1[y];
 
-	fill(dist1, dist1 + sizeof(dist1) / sizeof(int), INF);
+	fill(dist1, dist1 + 100001, INF);
 
 	dijk(y);
 	long long int yz = dist1[z];
@@ -75,7 +75,7 @@ int main(void) {
 		cout << -1 << ' ';
 	
 	check = y;
-	fill(dist1, dist1 + sizeof(dist1) / sizeof(int), INF);
+	fill(dist1, dist1 +100001, INF);
 
 	dijk(x);
 
