@@ -9,7 +9,6 @@ void fastio() {
 }
 
 int arr[1000001];
-int visited[1000001];
 
 int main(void) {
 	fastio();
