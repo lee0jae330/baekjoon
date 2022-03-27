@@ -1,33 +1,33 @@
-#include<iostream>
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 
-using namespace std;
+int main(void)
+{
+    int a = 1, b = 3, plus = 3;
+    int start, end, result = 0;
+    scanf("%d %d", &start, &end);
 
-void fastio() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-}
+    if (start == 1)
+    {
+        result = 1;
+        start++;
+    }
 
-int arr[1001];
+    while (end >= start)
+    {
+        if (a < start && start <= b)
+        {
+            result += plus - 1;
+            start++;
+        }
+        else
+        {
+            a = b;
+            b += plus;
+            plus++;
+        }
+    } 
 
-int main(void) {
-	fastio();
-	int cnt = 1,flag=0;
-	for (int i = 0; i < 1001; i++) {
-		if (flag == cnt) {
-			cnt++;
-			flag = 0;
-		}
-		arr[i] = cnt;
-		flag++;
-	}
-	
-	int A, B;
-	cin >> A >> B;
-	long long result = 0;
-	for (int i = A - 1; i < B; i++) {
-		result += arr[i];
-	}
-	cout << result << '\n';
-	return 0;
+    printf("%d", result);
+
 }
