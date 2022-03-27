@@ -1,15 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include<iostream>
 #include<queue>
 #include<vector>
 #include<algorithm>
+#include<stdio.h>
 
 using namespace std;
 
-void fastio() {
+/*void fastio() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
-}
+}*/
 
 int arr[101][101];
 int visited[101][101];
@@ -123,12 +126,13 @@ bool bfs1(int x, int y, int H, int W) {
 }
 
 int main(void) {
-	fastio();
+	//fastio();
 	int W, H;
-	cin >> W >> H;
+	scanf("%d %d", &W, &H);
+	//cin >> W >> H;
 	for (int i = 0; i < H; i++) {
 		for (int j = 0; j < W; j++)
-			cin >> arr[i][j];
+			scanf("%d", &arr[i][j]);
 	}
 	for (int i = 0; i < H; i++) {
 		for (int j = 0; j < W; j++) {
@@ -157,6 +161,7 @@ int main(void) {
 				result += cnt[i][j];
 		}
 	}
-	cout << result << '\n';
+	printf("%d\n", result);
+	//cout << result << '\n';
 	return 0;
 }
