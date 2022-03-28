@@ -1,18 +1,10 @@
-#include<iostream>
-
-using namespace std;
-
-void fastio() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
-}
+#include<stdio.h>
 
 int main(void) {
-	fastio();
 	long long hp1, atk1, hp2, atk2;
-	cin >> hp1 >> atk1 >> hp2 >> atk2;
+	scanf("%lld %lld %lld %lld", &hp1, &atk1, &hp2, &atk2);
 	long long P, S;
-	cin >> P >> S;
+	scanf("%lld %lld", &P, &S);
 	long long knight = hp2 / atk1;
 	if (hp2 % atk1)
 		knight++;
@@ -20,7 +12,7 @@ int main(void) {
 	if (hp1 % atk2)
 		devil++;
 	if (knight > devil)
-		cout << "gg" << '\n';
+		printf("gg\n");
 	else {
 		int ishealed = 0;
 		if (hp2 % atk1 == 0) {
@@ -29,7 +21,6 @@ int main(void) {
 				ishealed = 1;
 		}
 		else {
-			//long long n = hp2 / atk1;
 			if (hp2 % atk1 <= P)
 				ishealed = 1;
 		}
@@ -44,13 +35,12 @@ int main(void) {
 				tmp++;
 			long long result = num + tmp;
 			if (result > devil)
-				cout << "gg" << '\n';
+				printf("gg\n");
 			else
-				cout << "Victory!" << '\n';
+				printf("Victory!\n");
 		}
-		else {
-			cout << "Victory!" << '\n';
-		}
+		else
+			printf("Victory!\n");
 	}
 	return 0;
 }
