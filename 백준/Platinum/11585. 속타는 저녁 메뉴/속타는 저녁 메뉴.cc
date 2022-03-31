@@ -39,7 +39,8 @@ vector<int>KMP(string text, string pattern) {
 			j = pi[j - 1];
 		if (text[i] == pattern[j]) {
 			if (j == m - 1) {
-				pos.push_back(i - m + 1);
+				if(i-m+1<real_n)
+					pos.push_back(i - m + 1);
 				j = pi[j];
 			}
 			else
@@ -84,10 +85,10 @@ int main(void) {
 
 	vector<int>kmp = KMP(text, pattern);
 	int sz = kmp.size();
-	for (int i = 0; i < sz; i++) {
+/*	for (int i = 0; i < sz; i++) {
 		if(kmp[i]>=N)
 			sz--;
-	}
+	}*/
 	int GCD = gcd(sz, N);
 	if (N == 1) {
 		cout << 1<<'/'<<1<<'\n';
