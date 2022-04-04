@@ -16,19 +16,7 @@ int main(void) {
 	if (N == 1||N==2)
 		cout << "koosaga" << '\n';
 	else {
-		if (N % 2 == 0) { //짝수
-			N /= 2;
-			for (long long i = 2; i <= sqrt(N); i++) {
-				if (N % i == 0) {
-					cout << "koosaga" << '\n';
-					return 0;
-				}
-			}
-			cout << "cubelover" << '\n';
-
-		}
-		else {
-			int cnt = 0;
+		int cnt = 0;
 			int num = 0;
 			for (long long i = 2; i <= sqrt(N); i++) {
 				if (N % i == 0) {
@@ -48,7 +36,6 @@ int main(void) {
 					cout << "cubelover" << '\n';
 
 			}
-		}
 	}
 	return 0;
 }
