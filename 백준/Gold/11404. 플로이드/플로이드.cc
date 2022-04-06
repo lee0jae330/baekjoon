@@ -14,6 +14,7 @@ void fastio() {
 int dist[101][101];
 
 int main(void) {
+	fastio();
 	int N,M;
 	cin >>N>>M;
 	for (int i = 0; i < M; i++) {
