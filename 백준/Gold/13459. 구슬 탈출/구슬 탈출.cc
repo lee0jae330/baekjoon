@@ -310,7 +310,7 @@ void bfs() {
 						if (!visited[tmp_rx][ry][tmp_bx][by] && cnt + 1 <= 10) {
 							if (f) {
 								flag=1;
-								continue;
+								return;
 							}
 							visited[tmp_rx][ry][tmp_bx][by] = 1;
 							q.push({ {{tmp_rx, ry},{tmp_bx,by}},cnt + 1 });
