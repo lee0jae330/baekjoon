@@ -78,12 +78,6 @@ int main(void) {
 		B[num]++;
 	}
 
-	/*for (auto iter = A.begin(); iter != A.end(); iter++) {
-		cout << iter->first <<' '<<iter->second<<'\n';
-	}
-	for (auto iter = B.begin(); iter != B.end(); iter++) {
-		cout << iter->first << ' ' << iter->second << '\n';
-	}*/
 
 	long long tmp = 1;
 	int f = 0;
