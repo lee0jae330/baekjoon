@@ -14,51 +14,85 @@ void fastio() {
 	cout.tie(NULL);
 }
 
-map<long long,int > A,B;
+map<int, int>A;
+map<int, int>B;
 
 int main(void) {
 	fastio();
 	int N;
-	cin >>N;
+	cin >> N;
 	for (int i = 0; i < N; i++) {
 		int num;
-		cin  >>num;
-		for (int j = 2; j <= sqrt(num); j++) {
-			while (num % j == 0) {
-				A[j]++;
-				num/=j;
+		cin >> num;
+		if (num <= 3) {
+			if (num != 1) {
+				A[num]++;
 			}
+			continue;
 		}
-		if(num>1) 
-			A[num]++;
+		while (num > 1) {
+			int flag = 0;
+			for (int j = 2; j <= sqrt(num); j++) {
+				if (num % j == 0) {
+					A[j]++;
+					flag = 1;
+					num /= j;
+					break;
+				}
+			}
+			if (!flag)
+				break;
+		}
+		if (num == 1)
+			continue;
+		A[num]++;
 	}
+
 	int M;
-	cin >>M;
+	cin >> M;
 	for (int i = 0; i < M; i++) {
 		int num;
 		cin >> num;
-		for (int j = 2; j <= sqrt(num); j++) {
-			while (num % j == 0) {
-				B[j]++;
-				num /= j;
+		if (num <= 3) {
+			if (num != 1) {
+				B[num]++;
 			}
+			continue;
 		}
-		if (num > 1)
-			B[num]++;
+		while (num > 1) {
+			int flag = 0;
+
+			for (int j = 2; j <= sqrt(num); j++) {
+				if (num % j == 0) {
+					B[j]++;
+					num /= j;
+					flag = 1;
+					break;
+				}
+			}
+			if (!flag)
+				break;
+		}
+		if (num == 1)
+			continue;
+		B[num]++;
 	}
-	/*for(auto iter= A.begin();iter!=A.end();iter++)
-		cout << iter->first<<' '<<iter->second<<'\n';
-	for (auto iter = B.begin(); iter != B.end(); iter++)
-		cout << iter->first << ' ' << iter->second << '\n';*/
+
+	/*for (auto iter = A.begin(); iter != A.end(); iter++) {
+		cout << iter->first <<' '<<iter->second<<'\n';
+	}
+	for (auto iter = B.begin(); iter != B.end(); iter++) {
+		cout << iter->first << ' ' << iter->second << '\n';
+	}*/
+
+	long long tmp = 1;
+	int f = 0;
 	auto a= A.begin(), b= B.begin();
-	long long tmp=1;
-	int f=0;
 	while (a != A.end() && b != B.end()) {
-		if(a->first > b -> first)
+		if(a->first>b->first)
 			b++;
-		else if(a->first<b->first) {
+		else if(a->first<b->first)
 			a++;
-		}
 		else {
 			int cnt = min(a->second, b->second);
 			while (cnt--) {
@@ -72,10 +106,10 @@ int main(void) {
 			b++;
 		}
 	}
+	string str = to_string(tmp);
 	if (f) {
-		string s= to_string(tmp);
-		for(int i=0;i<9-s.length();i++)
-			cout <<0;
+		for (int i = 0; i < 9 - str.length(); i++)
+			cout << 0;
 	}
 	cout << tmp << '\n';
 	return 0;
