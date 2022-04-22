@@ -91,9 +91,7 @@ void move() {
 						}
 					}
 				}
-
 				
-				//cout <<arr[i][j]<<' '<< x << ' ' << y << '\n';
 				if (comp[x][y]) {
 					if (v[comp[x][y] - 1].size < sk.size) {
 						comp[x][y] = arr[i][j];
@@ -122,14 +120,6 @@ int main(void) {
 	}
 	int result = 0;
 	int person = -1;
-	/*cout << '\n';
-	for (int i = 0; i < R; i++) {
-		for (int j = 0; j < C; j++) {
-			cout << arr[i][j] << ' ';
-		}
-		cout << '\n';
-	}
-	cout << '\n';*/
 
 	while (person < C) {
 		int flag = 0;
