@@ -13,7 +13,6 @@ char arr[1001][27];
 int mid[27];
 int mid2[27];
 int last[27];
-int check[27];
 
 int main(void) {
 	fastio();
@@ -108,11 +107,5 @@ int main(void) {
 	else {
 		cout << result << '\n';
 	}
-	/*for (int i = 0; i < K; i++)
-		cout << mid[i] << ' ';
-	cout << '\n';
-	for (int i = 0; i < K; i++)
-		cout << mid2[i] << ' ';
-	cout << '\n';*/
 	return 0;
 }
