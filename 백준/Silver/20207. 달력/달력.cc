@@ -13,13 +13,6 @@ void fastio() {
 int arr[1100][366];
 vector<pair<int, int>>v;
 
-bool comp(pair<int, int>p1, pair<int, int>p2) {
-	if (p1.second == p2.second)
-		return p1.first < p2.first;
-	return p1.second < p2.second;
-
-}
-
 int main(void) {
 	fastio();
 	int N;
@@ -38,8 +31,6 @@ int main(void) {
 	long long result = 0;
 	int flag = 0;
 	for (int i = 0; i < v.size(); i++) {
-		//cout << v[i].first << ' ' << v[i].second << '\n';
-		//cout << s << ' ' << e << '\n';
 		if (i == 0) {
 			s = v[i].first, e = v[i].second;
 		}
@@ -66,13 +57,7 @@ int main(void) {
 			arr[tmp][j] = 1;
 		}
 	}
-	//cout << s << ' ' << e << ' ' << max_tmp << '\n';
 	result += max_tmp * (e - s + 1);
-	/*for (int i = 0; i < 5; i++) {
-		for (int j = 1; j <= 13; j++)
-			cout << arr[i][j] << ' ';
-		cout << '\n';
-	}*/
 	cout << result <<'\n';
 
 	return 0;
