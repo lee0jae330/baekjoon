@@ -22,11 +22,7 @@ int main(void) {
 			arr[tmp--][i] = 1;
 		}
 	}
-	/*for (int i = 0; i < H; i++) {
-		for (int j = 0; j < W; j++)
-			cout << arr[i][j] << ' ';
-		cout << '\n';
-	}*/
+	
 	int result = 0;
 	int l=0;
 	for (int i = H - 1; i >= 0; i--) {
