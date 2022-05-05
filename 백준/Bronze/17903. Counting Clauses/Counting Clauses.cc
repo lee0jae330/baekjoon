@@ -14,10 +14,6 @@ int main(void) {
 	fastio();
 	int N, M,tmp;
 	cin >> N >> M;
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < M; j++)
-			cin >> tmp;
-	}
 	if (N >= 8)
 		cout << "satisfactory" << '\n';
 	else
