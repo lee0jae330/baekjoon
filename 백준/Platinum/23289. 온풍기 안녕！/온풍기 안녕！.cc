@@ -801,11 +801,6 @@ int main(void) {
 			m[{x, y + 1}].left = 1;
 		}
 	}
-	/*for (auto iter = m.begin(); iter != m.end(); iter++) {
-		cout << iter->first.first << ' ' << iter->first.second << '\n';
-		wall w = iter->second;
-		cout << w.up << ' ' << w.right << ' ' << w.down << ' ' << w.left << '\n';
-	}*/
 	int choco = 0;
 	while (choco <= 100) {
 		/*바람 불기*/
@@ -818,14 +813,6 @@ int main(void) {
 
 		}
 		
-		/*cout << '\n';
-		for (int i = 0; i < R; i++) {
-			for (int j = 0; j < C; j++) {
-				cout << arr[i][j] << ' ';
-			}
-			cout << '\n';
-		}
-		cout << '\n';*/
 		arrTocp();
 		/*온도 조절*/
 
@@ -872,13 +859,6 @@ int main(void) {
 			cout << choco << '\n';
 			return 0;
 		}
-		/*for (int i = 0; i < R; i++) {
-			for (int j = 0; j < C; j++) {
-				cout << arr[i][j] << ' ';
-			}
-			cout << '\n';
-		}
-		*/
 	}
 	cout << 101 << '\n';
 	return 0;
