@@ -5,7 +5,6 @@ using namespace std;
 int R, C;
 
 char arr[101][101];
-char cp[101][101];
 
 int xx[4]={0,1,0,-1};
 int yy[4]={1,0,-1,0};
@@ -67,15 +66,7 @@ int main() {
 				}
 			}
 		}
-		/*
-		for (int i = 0; i < R; i++) {
-			for (int j = 0; j < C; j++) {
-				cout << arr[i][j];
-			}
-			cout <<'\n';
-		}
-		cout << '\n';
-		*/
+
 		int cnt = 1;
 
 
@@ -87,8 +78,6 @@ int main() {
 				}
 			}
 		}
-
-		//cout << "cnt: "<< cnt << '\n';
 
 		if (cnt > 1) { //1보다 크면 클러스터가 2개 이상
 			for (int num = 1; num < cnt; num++) {
@@ -110,7 +99,6 @@ int main() {
 						}
 					}
 				}
-				//cout << dist <<'\n';
 				if(!dist)
 					continue;
 				for (int c = 0; c < C; c++) {
@@ -120,16 +108,6 @@ int main() {
 						}
 					}
 				}
-				/*
-				for (int i = 0; i < R; i++) {
-					for (int j = 0; j < C; j++) {
-						cout << arr[i][j];
-					}
-					cout << '\n';
-				}
-				cout << '\n';
-				*/
-				
 			}
 		}
 	}
