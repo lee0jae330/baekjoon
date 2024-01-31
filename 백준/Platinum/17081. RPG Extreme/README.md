@@ -1,4 +1,4 @@
-# [Platinum I] RPG Extreme - 17081 
+# [Platinum II] RPG Extreme - 17081 
 
 [문제 링크](https://www.acmicpc.net/problem/17081) 
 
@@ -8,7 +8,11 @@
 
 ### 분류
 
-구현(implementation), 시뮬레이션(simulation)
+구현, 시뮬레이션
+
+### 제출 일자
+
+2022년 3월 29일 00:38:29
 
 ### 문제 설명
 
