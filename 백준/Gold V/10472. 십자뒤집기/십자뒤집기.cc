@@ -9,7 +9,7 @@ int P;
 char arr[3][3];
 
 
-int visited[100000];
+int visited[10000];
 
 vector<int> v = { 1,2,4,8,16,32,64,128,256 };
 
@@ -25,9 +25,7 @@ void bfs(int x) {
 		q.pop();
 		char field[3][3];
 		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				field[i][j] ='.';
-			}
+			fill(field[i], field[i] + 3, '.');
 		}
 
 		int cnt = 0;
@@ -36,7 +34,7 @@ void bfs(int x) {
 			if (v[i] == (x & v[i])) {
 				cnt++;
 				int r = i / 3, c = i % 3;
-				
+
 				if (field[r][c] == '.') {
 					field[r][c] = '*';
 				}
@@ -46,11 +44,11 @@ void bfs(int x) {
 				}
 
 				for (int k = 0; k < 4; k++) {
-					int tx = r+xx[k],ty=c+yy[k];
-					if(tx<0||ty<0||tx>=3||ty>=3)
+					int tx = r + xx[k], ty = c + yy[k];
+					if (tx < 0 || ty < 0 || tx >= 3 || ty >= 3)
 						continue;
 					if (field[tx][ty] == '.') {
-						field[tx][ty]='*';
+						field[tx][ty] = '*';
 					}
 					else {
 						field[tx][ty] = '.';
@@ -58,23 +56,26 @@ void bfs(int x) {
 				}
 			}
 		}
-		int flag =0;
+		int flag = 0;
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				if (arr[i][j] != field[i][j]) {
-					flag =1;
+					flag = 1;
 				}
 			}
 		}
 		if (!flag) {
-			cout <<cnt << '\n';
+			cout << cnt << '\n';
 			return;
 		}
 
 		for (int num : v) {
+			/*if (num == (num & x)) {
+				continue;
+			}*/
 			if (!visited[x + num]) {
-				visited[x+num]=1;
-				q.push({x+num});
+				visited[x + num] = 1;
+				q.push({ x + num });
 			}
 		}
 	}
@@ -92,7 +93,7 @@ int main() {
 
 
 	while (P--) {
-		memset(visited,0,sizeof(visited));
+		memset(visited, 0, sizeof(visited));
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
@@ -100,7 +101,20 @@ int main() {
 			}
 		}
 
-		bfs(0);
+		int flag = 0;
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (arr[i][j] != '.') {
+					flag = 1;
+				}
+			}
+		}
+		if (!flag) {
+			cout << 0 << '\n';
+			continue;
+		}
+
+		bfs(1);
 
 	}
 	return 0;
