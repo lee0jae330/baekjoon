@@ -9,7 +9,7 @@ int P;
 char arr[3][3];
 
 
-int visited[10000];
+int visited[512];
 
 vector<int> v = { 1,2,4,8,16,32,64,128,256 };
 
@@ -70,9 +70,9 @@ void bfs(int x) {
 		}
 
 		for (int num : v) {
-			/*if (num == (num & x)) {
+			if (num == (num & x)) {
 				continue;
-			}*/
+			}
 			if (!visited[x + num]) {
 				visited[x + num] = 1;
 				q.push({ x + num });
@@ -100,21 +100,7 @@ int main() {
 				cin >> arr[i][j];
 			}
 		}
-
-		int flag = 0;
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				if (arr[i][j] != '.') {
-					flag = 1;
-				}
-			}
-		}
-		if (!flag) {
-			cout << 0 << '\n';
-			continue;
-		}
-
-		bfs(1);
+		bfs(0);
 
 	}
 	return 0;
