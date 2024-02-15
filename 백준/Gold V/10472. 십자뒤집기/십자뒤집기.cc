@@ -100,19 +100,6 @@ int main() {
 			}
 		}
 
-		int flag=0;
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				if (arr[i][j] != '.') {
-					flag=1;
-				}
-			}
-		}
-		if (!flag) {
-			cout << 0 <<'\n';
-			continue;
-		}
-
 		bfs(0);
 
 	}
