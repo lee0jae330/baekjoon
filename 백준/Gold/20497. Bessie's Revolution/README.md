@@ -1,4 +1,4 @@
-# [Gold V] Bessie's Revolution - 20497 
+# [Gold IV] Bessie's Revolution - 20497 
 
 [문제 링크](https://www.acmicpc.net/problem/20497) 
 
@@ -12,7 +12,7 @@
 
 ### 제출 일자
 
-2024년 2월 19일 04:38:40
+2024년 2월 19일 04:40:50
 
 ### 문제 설명
 

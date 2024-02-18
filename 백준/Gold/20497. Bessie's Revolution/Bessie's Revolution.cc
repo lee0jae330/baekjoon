@@ -6,9 +6,9 @@ using namespace std;
 
 int N;
 
-char arr[12][12];
+char arr[11][11];
 
-int visited[2][12][12];
+int visited[2][11][11];
 
 int xx[4]={0,1,0,-1};
 int yy[4]={1,0,-1,0};
