@@ -1,4 +1,4 @@
-# [Gold IV] 선그리기 - 2013 
+# [Gold II] 선그리기 - 2013 
 
 [문제 링크](https://www.acmicpc.net/problem/2013) 
 
@@ -8,7 +8,11 @@
 
 ### 분류
 
-자료 구조(data_structures), 분리 집합(disjoint_set), 기하학(geometry), 선분 교차 판정(line_intersection)
+자료 구조, 분리 집합, 기하학, 선분 교차 판정
+
+### 제출 일자
+
+2021년 11월 12일 04:44:18
 
 ### 문제 설명
 
