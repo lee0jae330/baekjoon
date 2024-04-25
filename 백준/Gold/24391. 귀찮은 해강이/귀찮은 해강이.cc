@@ -1,60 +1,65 @@
-#define _CRT_SECURE_NO_WARNINGS
+#include<bits/stdc++.h>
 
-#include<stdio.h>
+using namespace std;
+
+int N,M;
 
 int parent[100001];
-int course[100001];
+int ranking[100001];
 
-void init()
-{
-   for (int i = 0; i <= 100000; i++)
-      parent[i] = i;
+int find(int x) {
+	if (parent[x] != x) {
+		parent[x] = find(parent[x]);
+	}
+	return parent[x];
 }
 
-int find(int x)
-{
-   if (x == parent[x])
-      return x;
-   return parent[x] = find(parent[x]);
+void merge(int x, int y) {
+	int rootX = find(x);
+	int rootY = find(y);
+
+	if (rootX != rootY) {
+		if (ranking[rootX] < ranking[rootY]) {
+			parent[rootX] = rootY;
+		}
+		else if (ranking[rootX] > ranking[rootY]) {
+			parent[rootY] = rootX;
+		}
+		else {
+			parent[rootX] = rootY;
+			ranking[rootY++];
+		}
+	}
 }
 
-void merge(int x, int y)
-{
-   x = find(x);
-   y = find(y);
-   if (x != y)
-   {
-      if (x > y)
-         parent[x] = y;
-      else
-         parent[y] = x;
-   }
-}
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cin >> N >> M;
+	for(int i=1;i<=N;i++) {
+		parent[i] = i;
+	}
 
-int main(void)
-{
-   init();
-   int N, M;
-   scanf("%d %d", &N, &M);
-   for (int i = 0; i < M; i++)
-   {
-      int a, b;
-      scanf("%d %d", &a, &b);
-      merge(a, b);
-   }
-   for (int i = 1; i <= N; i++)
-      scanf("%d", &course[i]);
-   int cur = find(course[1]);
-   int cnt = 0;
-   for (int i = 2; i <= N; i++)
-   {
-      if (find(course[i]) != cur)
-      {
-         cnt++;
-         cur = find(course[i]);
-      }
-   }
-
-   printf("%d\n", cnt);
-   return 0;
+	for (int i = 0; i < M; i++) {
+		int x, y;
+		cin >>x >>y ;
+		merge(x,y);
+	}
+	vector<int>course;
+	for (int i = 0; i < N; i++) {
+		int num;
+		cin >> num;
+		course.push_back(num);
+	}
+	int cnt = 0;
+	int cur = find(course[0]);
+	for (int i = 1; i < N; i++) {
+		int tmp = find(course[i]);
+		if (tmp != cur) {
+			cnt ++;
+			cur = tmp;
+		}
+	}
+	cout << cnt <<'\n';
+	return 0;
 }
