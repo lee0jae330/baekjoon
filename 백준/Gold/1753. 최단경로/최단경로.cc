@@ -11,11 +11,17 @@ void dijkstra(int start) {
 	priority_queue<pair<int,int>>pq;
 	pq.push({0,start});
 	dist[start] = 0;
-
+    
+    
 	while (!pq.empty()) {
 		int d = -pq.top().first;
 		int cur = pq.top().second;
 		pq.pop();
+        
+        if(dist[cur]<d){
+            continue;
+        }
+        
 		for (auto adj : v[cur]) {
 			int nxt = adj.first;
 			int cost = d + adj.second;
