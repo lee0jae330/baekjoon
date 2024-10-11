@@ -11,7 +11,6 @@ void fastio() {
 
 int cow[200001];
 int arr[200001];
-int Minus[200001];
 
 int main(void) {
 	fastio();
