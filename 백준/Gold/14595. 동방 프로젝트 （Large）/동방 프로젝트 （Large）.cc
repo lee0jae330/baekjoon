@@ -6,8 +6,6 @@
 
 using namespace std;
 
-const int SIZE = 1e6+1;
-
 set<pair<int,int>>input;
 
 int main() {
