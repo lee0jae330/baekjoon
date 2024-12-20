@@ -57,24 +57,6 @@ bool merge(int x, int y) {
 	return true;
 }
 
-void bfs(int x) {
-	queue<int>q;
-	q.push(x);
-	visited[x] = 1e9 + 1;
-	while (!q.empty()) {
-		x = q.front();
-		q.pop();
-		for (int i = 0; i < v[x].size(); i++) {
-			int tx = v[x][i].first;
-			if (visited[tx]) {
-				continue;
-			}
-			visited[tx] = min(visited[x], v[x][i].second);
-			q.push(tx);
-		}
-	}
-}
-
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
@@ -97,16 +79,12 @@ int main() {
 
 	while (!pq.empty()) {
 		auto [x, y, z] = pq.top();
-		bool result = merge(x, y);
-		if (result) {
-			v[x].push_back({ y,-z });
-			v[y].push_back({ x,-z });
+		merge(x, y);
+		if (find(s) == find(e)) {
+			cout << -z <<'\n';
+			return 0;
 		}
 		pq.pop();
 	}
-
-	bfs(s);
-
-	cout << visited[e] << '\n';
 	return 0;
 }
