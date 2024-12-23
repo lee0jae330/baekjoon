@@ -1,4 +1,3 @@
-
 #include<iostream>
 #include<queue>
 #include<vector>
@@ -66,6 +65,9 @@ int main() {
 			if (merge(x, y)) {
 				cnt++;
 			}
+		}
+		else {
+			break;
 		}
 	}
 	cout << cnt <<'\n';
