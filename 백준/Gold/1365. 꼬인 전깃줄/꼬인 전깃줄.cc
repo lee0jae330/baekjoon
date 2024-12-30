@@ -20,13 +20,6 @@ int main() {
 		arr.push_back(num);
 	}
 
-	vector<int> tmp = arr;
-	sort(tmp.begin(), tmp.end());
-	if (tmp == arr) {
-		cout << 0 <<'\n';
-		return 0;
-	}
-
 	for (int i = 0; i < N; i++) {
 		auto iter = lower_bound(lis.begin(), lis.end(),arr[i]);
 		if (iter == lis.end()) {
