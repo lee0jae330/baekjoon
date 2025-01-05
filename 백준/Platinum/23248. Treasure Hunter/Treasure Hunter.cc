@@ -57,16 +57,7 @@ int main() {
 			}	
 		}
 
-		if (lis.size() == 1) {
-			if (cnt == 1) {
-				cnt = K;
-			}
-			else {
-				cnt--;
-				cnt +=  cp.size();
-			}
-			break;
-		}
+		
 	
 		if (tmp.empty()) {
 			break;
