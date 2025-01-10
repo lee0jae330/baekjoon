@@ -13,7 +13,7 @@ int main() {
 	cin >> str;
 
 	int x = 0, y = 0;
-	for (int i = 0; i < min((int)1e5, K); i++) {
+	for (int i = 0; i < min(N, K); i++) {
 		for (char c : str) {
 			if (c == 'U') {
 				y++;
