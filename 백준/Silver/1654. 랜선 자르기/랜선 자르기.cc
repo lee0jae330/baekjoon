@@ -4,41 +4,48 @@
 
 using namespace std;
 
-void fastio() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
-}
+typedef long long ll;
 
-vector<long long int>v;
+vector<ll>v;
 
-long long int para_search(long long int start, long long int end, long long int target) {
-	long long int mid;
-	while (start+1< end) {
-		mid = (start + end) / 2;
-		long long int sum = 0;
-		for (int i = 0; i < v.size(); i++) {
-			long long int result = v[i] / mid;
-			sum += result;
+bool cmp(ll length, ll num) {
+	ll cnt = 0;
+	for (ll n : v) {
+		cnt += n /length;
+		if (num <= cnt) {
+			return true;
 		}
-		if (sum >= target) {
-			start = mid;
-		}
-		else
-			end = mid;
 	}
-	return start;
+	return false;
 }
 
-int main(void) {
-	fastio();
-	int K, N;
+ll search(ll num) {
+	ll left = 1;
+	ll right = v[v.size()-1];
+	ll result = 0;
+	while (left <= right) {
+		ll mid = (left + right)/ 2;
+		if (cmp(mid, num)) {
+			result = mid;
+			left = mid+1;
+		}
+		else {
+			right = mid-1;
+		}
+	}
+	return result;
+}
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	ll K, N;
 	cin >> K >> N;
-	for (int i = 0; i < K; i++) {
-		long long int num;
-		cin >> num;
-		v.push_back(num);
+	v.resize(K);
+	for (ll i = 0; i < K; i++) {
+		cin >> v[i];
 	}
 	sort(v.begin(), v.end());
-	cout << para_search(1, v[K-1]+1, N) << '\n';
+	cout << search(N) <<'\n';
 	return 0;
 }
