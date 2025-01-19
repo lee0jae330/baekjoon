@@ -55,11 +55,12 @@ int main() {
 
 	cin >> N >> M;
 	v.resize(N);
+	ll sum = 0;
 	for (int i = 0; i < N; i++) {
 		cin >> v[i];
+		sum += v[i];
 	}
 
-	ll sum = accumulate(v.begin(), v.end(), 0ll);
 	cout << search(sum) << '\n';
 	return 0;
 }
