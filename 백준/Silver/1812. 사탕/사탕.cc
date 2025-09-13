@@ -2,26 +2,25 @@
 #include<vector>
 #include<numeric>
 
-typedef long long ll;
+
 
 using namespace std;
 
-vector<ll> v;
+vector<int> v;
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
-
-	ll N;
+	int N;
 	cin >> N;
 
 	v.resize(N);
 
-	for (ll i = 0; i < N; i++) {
+	for (int i = 0; i < N; i++) {
 		cin >> v[i];
 	}
 
-	ll total = accumulate(v.begin(), v.end(), 0) / 2;
+	int total = accumulate(v.begin(), v.end(), 0) / 2;
 	vector<int>arr(N);
 
 	for (int i = 0; i < N; i++) {
