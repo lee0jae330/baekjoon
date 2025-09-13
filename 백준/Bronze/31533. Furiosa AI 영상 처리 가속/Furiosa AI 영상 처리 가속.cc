@@ -17,13 +17,25 @@ int main() {
 	cout << fixed;
 	cout.precision(7);
 
-	if (tmp1 * 2 < tmp2 * 2 && tmp1 * 2 < n) {
-		cout << tmp1 * 2 << '\n';
+	if (tmp1 * 2 <= tmp2 * 2) {
+
+		if (tmp1 * 2 < n) {
+			cout << tmp1 * 2 << '\n';
+		}
+		else {
+			cout << n <<'\n';
+		}
+
 		return 0;
 	}
 
-	if (tmp2 * 2 < tmp1 * 2 && tmp2 * 2 < m) {
-		cout << tmp2 * 2 << '\n';
+	if (tmp2 * 2 < tmp1 * 2) {
+		if (tmp2 * 2 < m) {
+			cout << tmp2 * 2 << '\n';
+		}
+		else {
+			cout << m <<'\n';
+		}
 		return 0;
 	}
 
