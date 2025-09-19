@@ -11,7 +11,7 @@ int main() {
 
 	cin >> a1 >> a0 >> c1 >> c2 >> n0;
 
-	for (int i = n0; i <= 1e5; i++) {
+	for (int i = n0; i <= 1e2; i++) {
 		int f = a1 * i + a0;
 		int c1g = c1 * i;
 		int c2g = c2 * i;
