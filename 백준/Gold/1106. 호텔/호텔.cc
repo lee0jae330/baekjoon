@@ -16,7 +16,7 @@ int main() {
 
 	cin >> C >> N;
 
-	vector<int>dp(10001, INF);
+	vector<int>dp(2001, INF);
 	vector<pair<int, int>>v(N);
 	dp[0] = 0;
 
@@ -24,7 +24,7 @@ int main() {
 		cin >> v[i].first >> v[i].second;
 	}
 
-	for (int i = 1; i <= 10000; i++) {
+	for (int i = 1; i <= 2000; i++) {
 		for (auto [cost, value] : v) {
 			if (i - value >= 0) {
 				dp[i] = min(dp[i], dp[i - value] + cost);
@@ -33,7 +33,7 @@ int main() {
 	}
 
 	int sol = dp[C];
-	for (int i = C + 1; i <= 10000; i++) {
+	for (int i = C + 1; i <= 2000; i++) {
 		sol = min(sol, dp[i]);
 	}
 
