@@ -1,45 +1,58 @@
-#include<bits/stdc++.h>
+#include<iostream>
 
 using namespace std;
 
-int main(void){
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int N; cin >>N;
-    queue<int>q;
-    while(N--){
-        string s;
-        cin >> s;
-        if(s=="push"){
-            int x; cin >> x;
-            q.push(x);
-        }
-        else if(s=="pop"){
-            if(q.empty()){
-                cout << -1<<'\n';
-            }
-            else{
-                cout << q.front()<<'\n';
-                q.pop();
-            }
-        }
-        else if(s=="size"){
-            cout << q.size()<<'\n';
-        }
-        else if(s=="empty"){
-            cout << q.empty() << '\n';
-        }
-        else if(s=="front"){
-            if(q.empty())
-                cout << -1<<'\n';
-            else
-                cout << q.front()<<'\n';
-        }
-        else{
-            if(q.empty())
-                cout << -1<<'\n';
-            else
-                cout << q.back()<<'\n';
-        }
-    }
+int arr[10001];
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
+
+	int front = 0;
+	int rear = 0;
+
+
+	int N;
+	cin >> N;
+	while (N--) {
+		string cmd;
+		cin >> cmd;
+
+		if (cmd == "push") {
+			int n;
+			cin >> n;
+			arr[rear++] = n;
+		}
+		else if (cmd == "front") {
+			if (front == rear && !arr[front]) {
+				cout << -1 <<'\n';
+			}
+			else {
+				cout << arr[front] <<'\n';
+			}
+		} else if (cmd == "back") {
+			if (front == rear && !arr[front]) {
+				cout << -1 << '\n';
+			}
+			else {
+				cout << arr[rear-1] << '\n';
+			}
+		}
+		else if (cmd == "size") {
+			cout << rear -front <<'\n';
+		}
+		else if (cmd == "empty") {
+			int result = (front == rear&& !arr[front]) ? 1 : 0;
+			cout << result  <<'\n';
+		}
+		else {
+			if (front == rear && !arr[front]) {
+				cout << -1 << '\n';
+			}
+			else {
+				cout << arr[front++] <<'\n';
+			}
+		}
+	}
 }
