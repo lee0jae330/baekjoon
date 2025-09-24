@@ -1,63 +1,72 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
 
 using namespace std;
-
-int N,M;
 
 int parent[100001];
 int ranking[100001];
 
-int find(int x) {
-	if (parent[x] != x) {
-		parent[x] = find(parent[x]);
+void init() {
+	for (int i = 0; i < 100001; i++) {
+		parent[i] = i;
+		ranking[i] = 0;
 	}
-	return parent[x];
+}
+
+int find(int x) {
+	if (x == parent[x]) {
+		return x;
+	}
+	return parent[x] = find(parent[x]);
 }
 
 void merge(int x, int y) {
-	int rootX = find(x);
-	int rootY = find(y);
+	x = find(x);
+	y = find(y);
+	if (x == y) {
+		return;
+	}
 
-	if (rootX != rootY) {
-		if (ranking[rootX] < ranking[rootY]) {
-			parent[rootX] = rootY;
-		}
-		else if (ranking[rootX] > ranking[rootY]) {
-			parent[rootY] = rootX;
-		}
-		else {
-			parent[rootX] = rootY;
-			ranking[rootY++];
-		}
+	if (ranking[x] > ranking[y]) {
+		parent[y] = x;
+	}
+	else if (ranking[x] < ranking[y]) {
+		parent[x] = y;
+	}
+	else {
+		ranking[x]++;
+		parent[y] = x;
 	}
 }
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
-	cin >> N >> M;
-	for(int i=1;i<=N;i++) {
-		parent[i] = i;
-	}
+	cout.tie(nullptr);
 
-	for (int i = 0; i < M; i++) {
+	init();
+
+	int N, M;
+	cin >> N >> M;
+
+	while (M--) {
 		int x, y;
-		cin >>x >>y ;
+		cin >> x >> y;
 		merge(x,y);
 	}
-	vector<int>course;
+
+	vector<int>v(N);
 	for (int i = 0; i < N; i++) {
-		int num;
-		cin >> num;
-		course.push_back(num);
+		cin >> v[i];
 	}
+
+
 	int cnt = 0;
-	int cur = find(course[0]);
+	int cur = find(v[0]);
 	for (int i = 1; i < N; i++) {
-		int tmp = find(course[i]);
-		if (tmp != cur) {
-			cnt ++;
-			cur = tmp;
+		if (cur != find(v[i])) {
+			cnt++;
+			cur = find(v[i]);
 		}
 	}
 	cout << cnt <<'\n';
