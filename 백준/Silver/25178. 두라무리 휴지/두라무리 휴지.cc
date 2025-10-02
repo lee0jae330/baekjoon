@@ -4,9 +4,6 @@
 
 using namespace std;
 
-int arr1[26];
-int arr2[26];
-
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
