@@ -7,64 +7,13 @@ using namespace std;
 int R, C;
 
 char arr[1001][1001];
-int visited[1001][1001];
 int visited1[1001][1001];
+int visited2[1001][1001];
 
 int xx[4] = { 0,1,0,-1 };
 int yy[4] = { 1,0,-1,0 };
 
 queue<pair<int, int>>q;
-
-void bfs() {
-	while (!q.empty()) {
-		auto [x, y] = q.front();
-		q.pop();
-
-		for (int i = 0; i < 4; i++) {
-			int tx = x + xx[i];
-			int ty = y + yy[i];
-
-			if (tx < 0 || ty < 0 || tx >= R || ty >= C || visited[tx][ty] != -1) {
-				continue;
-			}
-
-			if (arr[tx][ty] == '.') {
-				visited[tx][ty] = visited[x][y] + 1;
-				q.emplace(tx, ty);
-			}
-		}
-	}
-}
-
-int sol = -1;
-
-void bfs1() {
-	while (!q.empty()) {
-		auto [x, y] = q.front();
-		q.pop();
-
-		for (int i = 0; i < 4; i++) {
-			int tx = x + xx[i];
-			int ty = y + yy[i];
-
-			if (tx < 0 || ty < 0 || tx >= R || ty >= C) {
-				sol = visited1[x][y] + 1;
-				return;
-			}
-
-			if (visited1[tx][ty] != -1) {
-				continue;
-			}
-
-			if (arr[tx][ty] == '.') {
-				if (visited[tx][ty] == -1 || visited1[x][y] + 1 < visited[tx][ty]) {
-					visited1[tx][ty] = visited1[x][y] + 1;
-					q.emplace(tx, ty);
-				}
-			}
-		}
-	}
-}
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -72,8 +21,8 @@ int main() {
 	cout.tie(nullptr);
 
 	for (int i = 0; i < 1001; i++) {
-		fill(visited[i], visited[i] + 1001, -1);
 		fill(visited1[i], visited1[i] + 1001, -1);
+		fill(visited2[i], visited2[i] + 1001, -1);
 	}
 
 	cin >> R >> C;
@@ -88,23 +37,48 @@ int main() {
 				arr[i][j] = '.';
 			}
 			else if (arr[i][j] == 'F') {
-				visited[i][j] = 0;
 				q.emplace(i, j);
-				arr[i][j] = '.';
+				visited1[i][j] = 0;
 			}
 		}
 	}
 
-	bfs();
-	visited1[sx][sy] = 0;
-	q.emplace(sx, sy);
-	bfs1();
+	while (!q.empty()) {
+		auto [x, y] = q.front();
+		q.pop();
+		for (int i = 0; i < 4; i++) {
+			int tx = x + xx[i];
+			int ty = y + yy[i];
+			if (tx < 0 || ty < 0 || tx >= R || ty >= C || visited1[tx][ty] != -1) {
+				continue;
+			}
 
-	if (sol == -1) {
-		cout << "IMPOSSIBLE" <<'\n';
+			if (arr[tx][ty] == '.') {
+				visited1[tx][ty] = visited1[x][y] + 1;
+				q.emplace(tx, ty);
+			}
+		}
 	}
-	else {
-		cout << sol <<'\n';
+
+	q.emplace(sx, sy);
+	visited2[sx][sy] = 0;
+
+	while (!q.empty()) {
+		auto [x, y] = q.front();
+		q.pop();
+		for (int i = 0; i < 4; i++) {
+			int tx = x + xx[i];
+			int ty = y + yy[i];
+			if (tx < 0 || ty < 0 || tx >= R || ty >= C) {
+				cout << visited2[x][y] + 1 << '\n';
+				return 0;
+			}
+			if (arr[tx][ty] == '.' && visited2[tx][ty] == -1 && (visited2[x][y] + 1 < visited1[tx][ty] || visited1[tx][ty] == -1)) {
+				q.emplace(tx, ty);
+				visited2[tx][ty] = visited2[x][y] + 1;
+			}
+		}
 	}
+	cout << "IMPOSSIBLE" << '\n';
 	return 0;
 }
