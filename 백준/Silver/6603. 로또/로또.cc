@@ -4,28 +4,6 @@ using namespace std;
 
 int N;
 vector<int>v;
-vector<int>arr;
-int visited[14];
-
-void backtrack(int idx) {
-	if (arr.size() == 6) {
-		for (int num : arr) {
-			cout << num << ' ';
-		}
-		cout << '\n';
-		return;
-	}
-
-	for (int i = idx; i < N; i++) {
-		if (!visited[i]) {
-			visited[i] = 1;
-			arr.push_back(v[i]);
-			backtrack(i + 1);
-			arr.pop_back();
-			visited[i] = 0;
-		}
-	}
-}
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -33,20 +11,31 @@ int main() {
 	cout.tie(nullptr);
 
 	while (1) {
-		v.clear();
-		arr.clear();
 		cin >> N;
 		if (!N) {
 			return 0;
 		}
 
+		v.clear();
 		v.resize(N);
 		for (int i = 0; i < N; i++) {
 			cin >> v[i];
 		}
-		memset(visited, 0, sizeof(visited));
-		backtrack(0);
+
+		vector<int>comb(6, 0);
+		for (int i = 0; i < N - 6; i++) {
+			comb.push_back(1);
+		}
+
+		do {
+			for (int i = 0; i < N; i++) {
+				if (!comb[i]) {
+					cout << v[i] << ' ';
+				}
+			}
+			cout << '\n';
+		} while (next_permutation(comb.begin(), comb.end()));
 		cout << '\n';
 	}
-	return 0;
+	
 }
